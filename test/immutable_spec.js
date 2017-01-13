@@ -1,4 +1,4 @@
-import {expect} from 'chai';
+import {expect, assert} from 'chai';
 import {List, Map} from "immutable"
 
 describe('immutability', () => {
@@ -45,16 +45,16 @@ describe('immutability', () => {
   });
 
 
-//Map: Object
+  //Map: Object
   describe('a tree', () => {
     function addMovie(currentState, movie) {
       //Map with update:
-        return currentState.update('movies', movies => movies.push(movie));
- 
+      return currentState.update('movies', movies => movies.push(movie));
+
       //Map with get:
       //return currentState.set(
-        //'movies',
-        // currentState.get('movies').push(movie)
+      //'movies',
+      // currentState.get('movies').push(movie)
       //);
     }
 
@@ -79,5 +79,36 @@ describe('immutability', () => {
       }));
     });
   });
+
+  describe('Array', () => {
+    it('should start empty', () => {
+      let arr = [];
+
+      assert.equal(arr.length, 0);
+    });
+
+    it('should be 1', () => {
+      let array = ["testing"];
+
+      expect(array.length).to.equal(1, 'Should equal to one');
+
+    });
+  });
+// });
+
+describe('Names', () => {
+  it('should return new value of John', () => {
+    let person = Map({
+      firstName: 'Thomas'
+    });
+    //Original value
+    // expect(person.get('firstName')).to.equal('Thomas');
+
+    //New value
+    person = person.set("firstName", "John")
+
+    expect(person.get('firstName')).to.equal('John', 'This is the new immutable value');
+  });
+});
 
 });
