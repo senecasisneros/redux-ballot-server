@@ -48,10 +48,14 @@ describe('immutability', () => {
 //Map: Object
   describe('a tree', () => {
     function addMovie(currentState, movie) {
-      return currentState.set(
-        'movies',
-        currentState.get('movies').push(movie)
-      );
+      //Map with update:
+        return currentState.update('movies', movies => movies.push(movie));
+ 
+      //Map with get:
+      //return currentState.set(
+        //'movies',
+        // currentState.get('movies').push(movie)
+      //);
     }
 
     it('is immutable', () => {
