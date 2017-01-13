@@ -48,4 +48,17 @@ describe('reducer', () => {
       entries: []
     }));
   });
+
+
+//if a reducer are called with an undefined state, they know how to initialize it to a
+//meaningful value. In this case, the initial value is a Map. So, giving an undefined
+//state should work as if an empty Map had been given:
+  it('has an initial state', () => {
+    const action = {type: "SET_ENTRIES", entries: ["Trainspotting"]};
+    const nextState = reducer(undefined, action);
+    expect(nextState).to.equal(fromJS({
+      entries: ["Trainspotting"]
+    }));
+  });
+
 });

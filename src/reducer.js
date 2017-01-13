@@ -1,6 +1,7 @@
-import {setEntries, next, vote} from './core';
+import {setEntries, next, vote, INITIAL_STATE} from './core';
 
-export default function reducer(state, action) {
+export default function reducer(state = INITIAL_STATE, action) {
+  //INITIAL_STATE is coming from core.js and is an empty Map()
   //Figure out what function to call and call it
   switch (action.type) {
     case 'SET_ENTRIES':
