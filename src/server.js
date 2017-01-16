@@ -16,7 +16,7 @@ export default function startServer(store) {
 //We can listen to 'connection' events on our Socket.io server. We get one each time a
 //client connects. In the event listener we can emit the current state right away:
   io.on('connection', (socket) => {
-    socket.emit('state', store,getState().toJS());
+    socket.emit('state', store.getState().toJS());
 //emit 'action' events that we feed directly into our Redux store:
     socket.on('action', store.dispatch.bind(store));
   });
